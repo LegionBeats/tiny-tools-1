@@ -132,6 +132,45 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+@theme {
+  --color-soft-bg: #e0e5ec;
+  --color-soft-fg: #3d4852;
+  --color-soft-muted: #6b7280;
+  --color-soft-accent: #6c63ff;
+  --color-soft-accent-strong: #5848e0;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@utility neu-extruded {
+  background: #e0e5ec;
+  box-shadow:
+    9px 9px 18px rgba(163, 177, 198, 0.6),
+    -9px -9px 18px rgba(255, 255, 255, 0.9);
+}
+
+@utility neu-extruded-sm {
+  background: #e0e5ec;
+  box-shadow:
+    5px 5px 10px rgba(163, 177, 198, 0.55),
+    -5px -5px 10px rgba(255, 255, 255, 0.9);
+}
+
+@utility neu-inset {
+  background: #e0e5ec;
+  box-shadow:
+    inset 5px 5px 10px rgba(163, 177, 198, 0.55),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.9);
+}
+
+@utility neu-inset-sm {
+  background: #e0e5ec;
+  box-shadow:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.5),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.9);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -140,5 +179,6 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
   }
 }
