@@ -1,29 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { MarketingToolsPage } from "../components/MarketingToolsPage";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Marketing Tools — Free tools for creators & small businesses" },
+      {
+        name: "description",
+        content:
+          "A growing collection of free marketing tools. Start with the SMS opt-in link & QR code generator — grow your text list in one tap.",
+      },
+      { property: "og:title", content: "Marketing Tools" },
+      {
+        property: "og:description",
+        content:
+          "Free marketing tools for creators and small businesses. Generate an SMS opt-in link and QR code in seconds.",
+      },
     ],
   }),
-  component: Index,
+  component: MarketingToolsPage,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
