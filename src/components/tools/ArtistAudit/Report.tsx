@@ -140,7 +140,7 @@ export function Report({ data, result }: ReportProps) {
           rel="noopener noreferrer"
           className="neu-extruded-sm rounded-2xl px-6 py-3 text-sm font-semibold text-[#6C63FF] hover:-translate-y-0.5 transition-transform inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C63FF]"
         >
-          Browse beats to record on
+          Get your next release done with Legion
         </a>
       </div>
     </div>
