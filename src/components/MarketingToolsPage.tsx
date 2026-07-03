@@ -1,6 +1,10 @@
 import { SmsOptInTool } from "./tools/SmsOptInTool";
+import { ArtistAudit } from "./tools/ArtistAudit";
 
-const tools = [{ id: "sms-optin", Component: SmsOptInTool }];
+const tools = [
+  { id: "sms-optin", Component: SmsOptInTool },
+  { id: "artist-audit", Component: ArtistAudit },
+];
 
 export function MarketingToolsPage() {
   return (
