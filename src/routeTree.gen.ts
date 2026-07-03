@@ -10,33 +10,44 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToolsArtistAuditArtistIdRouteImport } from './routes/tools/artist-audit/$artistId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsArtistAuditArtistIdRoute =
+  ToolsArtistAuditArtistIdRouteImport.update({
+    id: '/tools/artist-audit/$artistId',
+    path: '/tools/artist-audit/$artistId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/tools/artist-audit/$artistId': typeof ToolsArtistAuditArtistIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/tools/artist-audit/$artistId': typeof ToolsArtistAuditArtistIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/tools/artist-audit/$artistId': typeof ToolsArtistAuditArtistIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/tools/artist-audit/$artistId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/tools/artist-audit/$artistId'
+  id: '__root__' | '/' | '/tools/artist-audit/$artistId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ToolsArtistAuditArtistIdRoute: typeof ToolsArtistAuditArtistIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +59,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/artist-audit/$artistId': {
+      id: '/tools/artist-audit/$artistId'
+      path: '/tools/artist-audit/$artistId'
+      fullPath: '/tools/artist-audit/$artistId'
+      preLoaderRoute: typeof ToolsArtistAuditArtistIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ToolsArtistAuditArtistIdRoute: ToolsArtistAuditArtistIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
