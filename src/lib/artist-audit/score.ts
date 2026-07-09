@@ -68,7 +68,7 @@ function buildGaps(data: AuditData): MomentumGap[] {
       severity: "critical",
       headline: `Your catalog has been quiet for ${months} months`,
       detail:
-        "After about six months of silence, streaming platforms stop actively pushing an artist and fans drift. A fresh release restarts the engine.",
+        "Long gaps mean no new-release moments — no Release Radar, no fresh reason for fans and playlists to come back to you. A new release restarts that clock.",
       cta: BEATSTORE_CTA,
     });
   } else if (releases.daysSinceLatest > 120) {
