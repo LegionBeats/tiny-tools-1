@@ -14,7 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      linkedin_profiles: {
+        Row: {
+          about: string
+          company: string
+          created_at: string
+          full_name: string
+          headline: string
+          id: string
+          location: string
+          skills: string[]
+          slug: string
+          theme: string
+        }
+        Insert: {
+          about?: string
+          company?: string
+          created_at?: string
+          full_name: string
+          headline?: string
+          id?: string
+          location?: string
+          skills?: string[]
+          slug: string
+          theme?: string
+        }
+        Update: {
+          about?: string
+          company?: string
+          created_at?: string
+          full_name?: string
+          headline?: string
+          id?: string
+          location?: string
+          skills?: string[]
+          slug?: string
+          theme?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
