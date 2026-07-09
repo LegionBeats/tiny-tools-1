@@ -5,11 +5,19 @@ interface CaptureFormProps {
   artistId: string;
   artistName: string;
   score: number;
+  heading?: string;
+  subline?: string;
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export function CaptureForm({ artistId, artistName, score }: CaptureFormProps) {
+export function CaptureForm({
+  artistId,
+  artistName,
+  score,
+  heading = "Send me this report",
+  subline = "Get your Momentum Audit in your inbox so you can act on it later.",
+}: CaptureFormProps) {
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
