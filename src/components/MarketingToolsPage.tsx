@@ -1,9 +1,11 @@
 import { SmsOptInTool } from "./tools/SmsOptInTool";
 import { ArtistAudit } from "./tools/ArtistAudit";
+import { LinkedInProfileCardTool } from "./tools/LinkedInProfileCard";
 
 const tools = [
   { id: "sms-optin", Component: SmsOptInTool },
   { id: "artist-audit", Component: ArtistAudit },
+  { id: "linkedin-profile-card", Component: LinkedInProfileCardTool },
 ];
 
 export function MarketingToolsPage() {
