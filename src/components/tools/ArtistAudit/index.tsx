@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { ToolCard } from "../ToolCard";
 import { searchArtists } from "@/lib/artist-audit/api";
+import { ctaHref } from "@/lib/artist-audit/config";
+import { CaptureForm } from "./CaptureForm";
 import type { ArtistSummary } from "@/lib/artist-audit/types";
 
 function formatFans(n: number): string {
@@ -71,9 +73,33 @@ export function ArtistAudit() {
         )}
 
         {enabled && !isFetching && results.length === 0 && (
-          <p className="text-sm text-[#6B7280]">
-            No artists found. Try a different spelling.
-          </p>
+          <div className="neu-inset rounded-3xl p-6 space-y-5 animate-in fade-in slide-in-from-bottom-2 duration-300">
+            <div>
+              <h3 className="font-semibold text-[#3D4852] text-lg">
+                Can't find yourself? That's actually the finding.
+              </h3>
+              <p className="mt-2 text-sm text-[#6B7280] leading-relaxed">
+                First, double-check the spelling. If it's right and you're still not here: your music isn't on Spotify, Apple, Deezer, or any major streaming platform. If you're posting on SoundCloud or YouTube, you're creating — but not distributing. That's a distribution gap, not a talent gap, and it's the single fastest thing to fix.
+              </p>
+            </div>
+            <CaptureForm
+              artistId="not-found"
+              artistName={debounced}
+              score={0}
+              heading="Get the fix"
+              subline="Drop your email and we'll show you how to get your music properly released everywhere."
+            />
+            <div className="text-center">
+              <a
+                href={ctaHref("beatstore")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="neu-extruded-sm rounded-2xl px-6 py-3 text-sm font-semibold text-[#6C63FF] hover:-translate-y-0.5 transition-transform inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C63FF]"
+              >
+                Get your next release made with Legion
+              </a>
+            </div>
+          </div>
         )}
 
         {results.length > 0 && (

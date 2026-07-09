@@ -3,7 +3,7 @@ import { BEATSTORE_CTA, BEATPACK_CTA } from "./config";
 
 // Weights sum to 100. These encode the marketing judgment of what "momentum"
 // means — tune them freely; the tests assert bands/ranges, not exact totals.
-export const WEIGHTS = { recency: 35, cadence: 30, depth: 15, reach: 20 } as const;
+export const WEIGHTS = { recency: 40, cadence: 35, depth: 15, reach: 10 } as const;
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
@@ -68,7 +68,7 @@ function buildGaps(data: AuditData): MomentumGap[] {
       severity: "critical",
       headline: `Your catalog has been quiet for ${months} months`,
       detail:
-        "After about six months of silence, streaming platforms stop actively pushing an artist and fans drift. A fresh release restarts the engine.",
+        "Long gaps mean no new-release moments — no Release Radar, no fresh reason for fans and playlists to come back to you. A new release restarts that clock.",
       cta: BEATSTORE_CTA,
     });
   } else if (releases.daysSinceLatest > 120) {
@@ -110,8 +110,8 @@ function buildGaps(data: AuditData): MomentumGap[] {
     gaps.push({
       id: "peers-shipping",
       severity: "warning",
-      headline: "Artists in your lane are releasing more than you",
-      detail: `Fans who listen to ${names} are one algorithmic step from you — but only if you're releasing when they come looking.`,
+      headline: "Artists with your audience size are releasing more often",
+      detail: `Listeners who follow ${names} are one click away from you — but they only get reminded you exist when you drop something new.`,
       cta: null,
     });
   }

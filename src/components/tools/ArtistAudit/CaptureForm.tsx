@@ -5,11 +5,19 @@ interface CaptureFormProps {
   artistId: string;
   artistName: string;
   score: number;
+  heading?: string;
+  subline?: string;
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export function CaptureForm({ artistId, artistName, score }: CaptureFormProps) {
+export function CaptureForm({
+  artistId,
+  artistName,
+  score,
+  heading = "Send me this report",
+  subline = "Get your Momentum Audit in your inbox so you can act on it later.",
+}: CaptureFormProps) {
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
@@ -58,10 +66,8 @@ export function CaptureForm({ artistId, artistName, score }: CaptureFormProps) {
 
   return (
     <div className="neu-inset rounded-3xl p-6">
-      <h3 className="font-semibold text-[#3D4852] text-lg">Send me this report</h3>
-      <p className="mt-1 text-sm text-[#6B7280]">
-        Get your Momentum Audit in your inbox so you can act on it later.
-      </p>
+      <h3 className="font-semibold text-[#3D4852] text-lg">{heading}</h3>
+      <p className="mt-1 text-sm text-[#6B7280]">{subline}</p>
       <form onSubmit={handleSubmit} className="mt-4 flex flex-col sm:flex-row gap-3" noValidate>
         <label htmlFor="capture-email" className="sr-only">
           Email address
