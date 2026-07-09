@@ -66,10 +66,8 @@ export function CaptureForm({
 
   return (
     <div className="neu-inset rounded-3xl p-6">
-      <h3 className="font-semibold text-[#3D4852] text-lg">Send me this report</h3>
-      <p className="mt-1 text-sm text-[#6B7280]">
-        Get your Momentum Audit in your inbox so you can act on it later.
-      </p>
+      <h3 className="font-semibold text-[#3D4852] text-lg">{heading}</h3>
+      <p className="mt-1 text-sm text-[#6B7280]">{subline}</p>
       <form onSubmit={handleSubmit} className="mt-4 flex flex-col sm:flex-row gap-3" noValidate>
         <label htmlFor="capture-email" className="sr-only">
           Email address
