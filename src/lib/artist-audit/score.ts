@@ -110,8 +110,8 @@ function buildGaps(data: AuditData): MomentumGap[] {
     gaps.push({
       id: "peers-shipping",
       severity: "warning",
-      headline: "Artists in your lane are releasing more than you",
-      detail: `Fans who listen to ${names} are one algorithmic step from you — but only if you're releasing when they come looking.`,
+      headline: "Artists with your audience size are releasing more often",
+      detail: `Listeners who follow ${names} are one click away from you — but they only get reminded you exist when you drop something new.`,
       cta: null,
     });
   }
