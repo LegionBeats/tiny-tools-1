@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as USlugRouteImport } from './routes/u/$slug'
 import { Route as ToolsArtistAuditArtistIdRouteImport } from './routes/tools/artist-audit/$artistId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const USlugRoute = USlugRouteImport.update({
+  id: '/u/$slug',
+  path: '/u/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ToolsArtistAuditArtistIdRoute =
@@ -26,27 +32,31 @@ const ToolsArtistAuditArtistIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/u/$slug': typeof USlugRoute
   '/tools/artist-audit/$artistId': typeof ToolsArtistAuditArtistIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/u/$slug': typeof USlugRoute
   '/tools/artist-audit/$artistId': typeof ToolsArtistAuditArtistIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/u/$slug': typeof USlugRoute
   '/tools/artist-audit/$artistId': typeof ToolsArtistAuditArtistIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/tools/artist-audit/$artistId'
+  fullPaths: '/' | '/u/$slug' | '/tools/artist-audit/$artistId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/tools/artist-audit/$artistId'
-  id: '__root__' | '/' | '/tools/artist-audit/$artistId'
+  to: '/' | '/u/$slug' | '/tools/artist-audit/$artistId'
+  id: '__root__' | '/' | '/u/$slug' | '/tools/artist-audit/$artistId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  USlugRoute: typeof USlugRoute
   ToolsArtistAuditArtistIdRoute: typeof ToolsArtistAuditArtistIdRoute
 }
 
@@ -57,6 +67,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/u/$slug': {
+      id: '/u/$slug'
+      path: '/u/$slug'
+      fullPath: '/u/$slug'
+      preLoaderRoute: typeof USlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/artist-audit/$artistId': {
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  USlugRoute: USlugRoute,
   ToolsArtistAuditArtistIdRoute: ToolsArtistAuditArtistIdRoute,
 }
 export const routeTree = rootRouteImport
