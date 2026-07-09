@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { ToolCard } from "../ToolCard";
 import { searchArtists } from "@/lib/artist-audit/api";
+import { ctaHref } from "@/lib/artist-audit/config";
+import { CaptureForm } from "./CaptureForm";
 import type { ArtistSummary } from "@/lib/artist-audit/types";
 
 function formatFans(n: number): string {
