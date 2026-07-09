@@ -3,7 +3,7 @@ import { BEATSTORE_CTA, BEATPACK_CTA } from "./config";
 
 // Weights sum to 100. These encode the marketing judgment of what "momentum"
 // means — tune them freely; the tests assert bands/ranges, not exact totals.
-export const WEIGHTS = { recency: 35, cadence: 30, depth: 15, reach: 20 } as const;
+export const WEIGHTS = { recency: 40, cadence: 35, depth: 15, reach: 10 } as const;
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
