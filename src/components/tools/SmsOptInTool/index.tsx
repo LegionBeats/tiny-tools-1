@@ -158,7 +158,7 @@ export function SmsOptInTool() {
             "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C63FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#E0E5EC]",
             canGenerate
               ? "neu-extruded-sm text-[#6C63FF] hover:-translate-y-0.5 active:translate-y-0.5 active:[box-shadow:inset_4px_4px_8px_rgba(163,177,198,0.6),inset_-4px_-4px_8px_rgba(255,255,255,0.9)] cursor-pointer"
-              : "neu-inset-sm text-[#9AA3B2] cursor-not-allowed",
+              : "neu-inset-sm text-[#9AA3B2]",
           ].join(" ")}
         >
           Generate
