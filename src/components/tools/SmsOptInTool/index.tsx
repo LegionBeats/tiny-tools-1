@@ -32,8 +32,10 @@ export function SmsOptInTool() {
   const canGenerate = digits.length >= 7 && keyword.trim().length > 0;
 
   const handleGenerate = () => {
+    console.log("handleGenerate called", { canGenerate, digitsLength: digits.length, keywordLength: keyword.trim().length });
     if (!canGenerate) {
       setShowPhoneError(digits.length < 7);
+      console.log("setShowPhoneError", digits.length < 7);
       return;
     }
     const body = encodeURIComponent(keyword.trim());
