@@ -286,7 +286,7 @@ export function GmailSearchBuilder() {
                 rel="noopener noreferrer"
                 className="neu-extruded-sm rounded-2xl px-6 py-3 text-sm font-semibold text-[#6C63FF] text-center hover:-translate-y-0.5 active:translate-y-0.5 transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C63FF]"
               >
-                Open in Gmail →
+                Advanced Search Results
               </a>
               <button
                 type="button"
