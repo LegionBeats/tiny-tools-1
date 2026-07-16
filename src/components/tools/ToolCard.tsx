@@ -14,12 +14,13 @@ export function ToolCard({ title, subtitle, children }: ToolCardProps) {
           {title}
         </h2>
         {subtitle && (
-          <p className="mt-2 text-[#6B7280] text-sm sm:text-base leading-relaxed">
+          <div className="mt-2 text-[#6B7280] text-sm sm:text-base leading-relaxed">
             {subtitle}
-          </p>
+          </div>
         )}
       </header>
       {children}
     </section>
   );
 }
+
