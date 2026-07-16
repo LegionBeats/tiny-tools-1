@@ -3,6 +3,7 @@ import { ArtistAudit } from "./tools/ArtistAudit";
 import { LinkedInProfileCardTool } from "./tools/LinkedInProfileCard";
 import { FindMyEmailTool } from "./tools/FindMyEmailTool";
 import { GmailSearchBuilder } from "./tools/GmailSearchBuilder";
+import { ExternalToolCard } from "./tools/ExternalToolCard";
 
 const tools = [
   { id: "sms-optin", Component: SmsOptInTool },
@@ -15,7 +16,7 @@ const tools = [
 export function MarketingToolsPage() {
   return (
     <div className="min-h-screen bg-[#E0E5EC] text-[#3D4852]">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 py-12 sm:py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-20">
         <header className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 neu-extruded-sm rounded-full px-4 py-1.5 mb-6">
             <span className="h-2 w-2 rounded-full bg-[#6C63FF]" />
@@ -31,10 +32,16 @@ export function MarketingToolsPage() {
           </p>
         </header>
 
-        <div className="space-y-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           {tools.map(({ id, Component }) => (
             <Component key={id} />
           ))}
+          <ExternalToolCard
+            title="Roast My Beat"
+            description="Get honest feedback on your music from a community of creators. External tool — link out to give it a try."
+            url="https://roast-my-beat.netlify.app/"
+            linkText="Try Roast My Beat"
+          />
         </div>
 
         <footer className="mt-16 text-center text-xs text-[#9AA3B2]">
