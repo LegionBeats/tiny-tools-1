@@ -177,12 +177,12 @@ export function GmailSearchBuilder() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
-            <label htmlFor="gs-after" className={labelClass}>After date</label>
-            <input id="gs-after" type="date" value={after} onChange={(e) => setAfter(e.target.value)} className={inputClass} />
-          </div>
-          <div>
             <label htmlFor="gs-before" className={labelClass}>Before date</label>
             <input id="gs-before" type="date" value={before} onChange={(e) => setBefore(e.target.value)} className={inputClass} />
+          </div>
+          <div>
+            <label htmlFor="gs-after" className={labelClass}>After date</label>
+            <input id="gs-after" type="date" value={after} onChange={(e) => setAfter(e.target.value)} className={inputClass} />
           </div>
         </div>
 
