@@ -2,12 +2,14 @@ import { SmsOptInTool } from "./tools/SmsOptInTool";
 import { ArtistAudit } from "./tools/ArtistAudit";
 import { LinkedInProfileCardTool } from "./tools/LinkedInProfileCard";
 import { FindMyEmailTool } from "./tools/FindMyEmailTool";
+import { GmailSearchBuilder } from "./tools/GmailSearchBuilder";
 
 const tools = [
   { id: "sms-optin", Component: SmsOptInTool },
   { id: "artist-audit", Component: ArtistAudit },
   { id: "linkedin-profile-card", Component: LinkedInProfileCardTool },
   { id: "find-my-email", Component: FindMyEmailTool },
+  { id: "gmail-search-builder", Component: GmailSearchBuilder },
 ];
 
 export function MarketingToolsPage() {
