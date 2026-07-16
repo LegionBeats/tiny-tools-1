@@ -63,8 +63,8 @@ export function SmsOptInTool() {
 
   return (
     <ToolCard
-      title="Grow Your SMS List"
-      subtitle="Generate a link and QR code that lets your audience subscribe to your texts in one tap."
+      title='Want to "take over" potential customers\' phones?'
+      subtitle="Have your subscribe word already written in a text that's going to your SMS signup number. Literally all they have to do is hit send and you've got another subscriber. It's like magic."
     >
       <div className="space-y-6">
         {/* Phone */}
