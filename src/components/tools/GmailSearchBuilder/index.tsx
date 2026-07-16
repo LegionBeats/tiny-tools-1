@@ -129,9 +129,13 @@ export function GmailSearchBuilder() {
 
   return (
     <ToolCard
-      title="Gmail Advanced Search Builder"
-      subtitle="Fill in the fields you care about and get a ready-to-use Gmail search — no operator syntax to memorize."
+      title="Struggling to find that one email?"
+      subtitle="Gmail search does 23 things you didn't know. We make it easy."
     >
+      <p className="text-sm text-[#6B7280] leading-relaxed">
+        Every field below is optional. Just fill in whatever will help you find what you need, and skip the rest.
+      </p>
+
       <div className="space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
