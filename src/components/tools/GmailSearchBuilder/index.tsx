@@ -105,7 +105,7 @@ export function GmailSearchBuilder() {
   ]);
 
   const searchUrl = query
-    ? `https://mail.google.com/mail/u/0/?search=${encodeURIComponent(query)}`
+    ? `https://mail.google.com/mail/u/0/#search/${encodeURIComponent(query)}`
     : "";
 
   const handleCopy = async () => {
