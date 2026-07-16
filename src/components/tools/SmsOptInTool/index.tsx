@@ -20,6 +20,7 @@ export function SmsOptInTool() {
   const [keyword, setKeyword] = useState("JOIN");
   const [result, setResult] = useState<{ link: string } | null>(null);
   const [copied, setCopied] = useState(false);
+  const [showPhoneError, setShowPhoneError] = useState(false);
   const qrWrapRef = useRef<HTMLDivElement>(null);
 
   const country = useMemo(
@@ -31,11 +32,20 @@ export function SmsOptInTool() {
   const canGenerate = digits.length >= 7 && keyword.trim().length > 0;
 
   const handleGenerate = () => {
-    if (!canGenerate) return;
+    if (!canGenerate) {
+      setShowPhoneError(digits.length < 7);
+      return;
+    }
     const body = encodeURIComponent(keyword.trim());
     const link = `sms:+${country.dial}${digits}?body=${body}`;
     setResult({ link });
     setCopied(false);
+    setShowPhoneError(false);
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhone(e.target.value);
+    if (showPhoneError) setShowPhoneError(false);
   };
 
   const handleCopy = async () => {
@@ -65,9 +75,14 @@ export function SmsOptInTool() {
     <ToolCard
       title={'Want to "take over" potential customers\' phones?'}
       subtitle={
-        <>
-          Have <em>your</em> subscribe word already written in a text that's going to <em>your</em> SMS signup number. Literally all they have to do is hit send and you've got another subscriber. It's like magic.
-        </>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>
+            Have <em>your</em> subscribe word already written in a text that's going to <em>your</em> SMS signup number.
+          </li>
+          <li>Literally all they have to do is hit send and you've got another subscriber.</li>
+          <li>It's like magic ✨</li>
+          <li>For your customized QR code, just enter your number + optin keyword.</li>
+        </ul>
       }
     >
       <div className="space-y-6">
@@ -97,13 +112,24 @@ export function SmsOptInTool() {
               autoComplete="tel"
               placeholder="555 123 4567"
               value={formatPhoneDisplay(digits, country.dial)}
-              onChange={(e) => setPhone(e.target.value)}
-              className="neu-inset-sm rounded-2xl px-4 py-3 flex-1 bg-transparent outline-none text-[#3D4852] text-base placeholder:text-[#9AA3B2] focus:ring-2 focus:ring-[#6C63FF]"
+              onChange={handlePhoneChange}
+              className={[
+                "neu-inset-sm rounded-2xl px-4 py-3 flex-1 bg-transparent outline-none text-[#3D4852] text-base placeholder:text-[#9AA3B2] focus:ring-2",
+                showPhoneError
+                  ? "ring-2 ring-red-500 focus:ring-red-500"
+                  : "focus:ring-[#6C63FF]",
+              ].join(" ")}
+              aria-invalid={showPhoneError}
             />
           </div>
           <p className="mt-2 text-xs text-[#6B7280]">
             The number your audience will text to opt in.
           </p>
+          {showPhoneError && (
+            <p className="mt-2 text-xs text-red-600 font-medium">
+              Please enter a valid phone number to generate your QR code.
+            </p>
+          )}
         </div>
 
         {/* Keyword */}
@@ -127,16 +153,15 @@ export function SmsOptInTool() {
         <button
           type="button"
           onClick={handleGenerate}
-          disabled={!canGenerate}
           className={[
             "w-full rounded-2xl py-4 text-base font-semibold tracking-wide transition-all duration-200",
             "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C63FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#E0E5EC]",
             canGenerate
               ? "neu-extruded-sm text-[#6C63FF] hover:-translate-y-0.5 active:translate-y-0.5 active:[box-shadow:inset_4px_4px_8px_rgba(163,177,198,0.6),inset_-4px_-4px_8px_rgba(255,255,255,0.9)] cursor-pointer"
-              : "neu-inset-sm text-[#9AA3B2] cursor-not-allowed",
+              : "neu-inset-sm text-[#9AA3B2]",
           ].join(" ")}
         >
-          {canGenerate ? "Generate" : "Enter a phone number to generate"}
+          Generate
         </button>
 
         {/* Output */}
