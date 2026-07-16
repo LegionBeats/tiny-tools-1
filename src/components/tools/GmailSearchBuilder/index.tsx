@@ -105,7 +105,7 @@ export function GmailSearchBuilder() {
   ]);
 
   const searchUrl = query
-    ? `https://mail.google.com/mail/u/0/?search=${encodeURIComponent(query)}`
+    ? `https://mail.google.com/mail/u/0/#search/${encodeURIComponent(query)}`
     : "";
 
   const handleCopy = async () => {
@@ -129,9 +129,13 @@ export function GmailSearchBuilder() {
 
   return (
     <ToolCard
-      title="Gmail Advanced Search Builder"
-      subtitle="Fill in the fields you care about and get a ready-to-use Gmail search — no operator syntax to memorize."
+      title="Struggling to find that one email?"
+      subtitle="Gmail search does 23 things you didn't know. We make it easy."
     >
+      <p className="text-sm text-[#6B7280] leading-relaxed">
+        Every field below is optional. Just fill in whatever will help you find what you need, and skip the rest.
+      </p>
+
       <div className="space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
@@ -173,12 +177,12 @@ export function GmailSearchBuilder() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
-            <label htmlFor="gs-after" className={labelClass}>After date</label>
-            <input id="gs-after" type="date" value={after} onChange={(e) => setAfter(e.target.value)} className={inputClass} />
-          </div>
-          <div>
             <label htmlFor="gs-before" className={labelClass}>Before date</label>
             <input id="gs-before" type="date" value={before} onChange={(e) => setBefore(e.target.value)} className={inputClass} />
+          </div>
+          <div>
+            <label htmlFor="gs-after" className={labelClass}>After date</label>
+            <input id="gs-after" type="date" value={after} onChange={(e) => setAfter(e.target.value)} className={inputClass} />
           </div>
         </div>
 
@@ -282,7 +286,7 @@ export function GmailSearchBuilder() {
                 rel="noopener noreferrer"
                 className="neu-extruded-sm rounded-2xl px-6 py-3 text-sm font-semibold text-[#6C63FF] text-center hover:-translate-y-0.5 active:translate-y-0.5 transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C63FF]"
               >
-                Open in Gmail →
+                Advanced Search Results
               </a>
               <button
                 type="button"
