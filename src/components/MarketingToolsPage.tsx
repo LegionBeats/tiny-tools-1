@@ -1,10 +1,11 @@
-import { Link } from "@tanstack/react-router";
 import { SmsOptInTool } from "./tools/SmsOptInTool";
 import { ArtistAudit } from "./tools/ArtistAudit";
 import { LinkedInProfileCardTool } from "./tools/LinkedInProfileCard";
 import { FindMyEmailTool } from "./tools/FindMyEmailTool";
 import { GmailSearchBuilder } from "./tools/GmailSearchBuilder";
 import { ExternalToolCard } from "./tools/ExternalToolCard";
+import { SiteNav, SiteFooterNav } from "./SiteNav";
+
 
 const tools = [
   { id: "sms-optin", Component: SmsOptInTool },
