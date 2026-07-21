@@ -53,6 +53,48 @@ export type Database = {
         }
         Relationships: []
       }
+      software_recommendations: {
+        Row: {
+          affiliate_url: string | null
+          category: string
+          created_at: string
+          description: string
+          id: string
+          logo_url: string | null
+          name: string
+          owner_id: string
+          tags: string[]
+          updated_at: string
+          url: string
+        }
+        Insert: {
+          affiliate_url?: string | null
+          category: string
+          created_at?: string
+          description: string
+          id?: string
+          logo_url?: string | null
+          name: string
+          owner_id: string
+          tags?: string[]
+          updated_at?: string
+          url: string
+        }
+        Update: {
+          affiliate_url?: string | null
+          category?: string
+          created_at?: string
+          description?: string
+          id?: string
+          logo_url?: string | null
+          name?: string
+          owner_id?: string
+          tags?: string[]
+          updated_at?: string
+          url?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

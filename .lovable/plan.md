@@ -1,45 +1,44 @@
-Add a new client-side tool card to the marketing tools page that helps email senders generate a Gmail-search embed button for their subscribers. No backend or database required.
+### Recommendation
+Add the software directory to the current **Tiny Tools** project as a new standalone route. This is the fastest path and keeps the architecture clean:
 
-### What it does
-- A visitor (the sender) enters:
-  - From address: the email address their confirmation message is sent from
-  - Subject keyword: the word that appears in the confirmation email subject line
-  - Button text: what the embed button should say (default: "Find my confirmation email")
-- The tool previews the button live and produces a copy-paste HTML snippet.
-- The generated button opens Gmail with a pre-filled search like `from:sender@example.com subject:confirm`.
+- You already have the Supabase backend, auth, and neumorphic design system in place.
+- The tool cards are already modular — a directory page can reuse the same visual language and feel like a natural sibling to the existing tools.
+- It gives you a real URL to share (`/stack` or `/recommends`) and the option to later spin it out into its own brand/project without rebuilding anything.
+- It does not dilute the homepage; the homepage stays focused on interactive tools, and the directory lives on its own route.
 
-### Why it fits
-- Matches the existing "no signup, instant output" pattern of the other tools.
-- Pure client-side React + Tailwind, no Supabase table or server function needed.
-- Complements the audience-growth tools with a subscriber-experience helper.
+If it ever grows into its own brand or needs its own domain, you can extract it cleanly because it will be a self-contained set of components and a single route.
 
-### Files to change
+### What we'll build
 
-1. **Create `src/components/tools/FindMyEmailTool/index.tsx`**
-   - New tool card component using `ToolCard`.
-   - State: `fromAddress`, `subjectKeyword`, `buttonText`, `copied`.
-   - Derive the Gmail search URL: `https://mail.google.com/mail/u/0/#search/from:<from>+subject:<keyword>`
-   - Render a live button preview styled with the existing neu-extruded/neu-inset classes.
-   - Render a `<textarea>` (or code block) with the paste-ready HTML snippet.
-   - Copy-to-clipboard for the snippet.
+1. **Database table: `software_recommendations`**
+   - `id`, `name`, `description`, `url`, `affiliate_url` (optional), `category`, `tags` (array), `logo_url` (optional), `created_at`.
+   - RLS: public read, authenticated write only for you (so you can add entries; anonymous users can never mutate).
 
-2. **Edit `src/components/MarketingToolsPage.tsx`**
-   - Import `FindMyEmailTool`.
-   - Add it to the `tools` array after the existing cards.
-   - Update the footer copy if needed (optional).
+2. **Admin route/page: `/stack/admin`**
+   - A simple form for you to add new software entries.
+   - Not advertised in the main navigation; you navigate to it directly.
+   - Protected by auth gate so only your account can use it.
 
-### UI details
-- Use the same input styling as the other tools: `neu-inset-sm rounded-2xl px-4 py-3` with `focus:ring-[#6C63FF]`.
-- Use the same primary button style: `neu-extruded-sm rounded-2xl`, purple accent text.
-- Output section appears after valid input, animated like the SMS tool.
-- Include a small explanation: "Paste this into your confirmation page or email so subscribers can jump straight to their Gmail search."
+3. **Public directory page: `/stack`**
+   - Header with the same neumorphic hero styling as the homepage.
+   - Filter/search bar and category pills.
+   - Cards for each software entry: name, description, category, tags, and a CTA button.
+   - If an `affiliate_url` exists, the CTA uses it; otherwise it uses the plain `url`.
+   - Responsive grid matching the rest of the site.
 
-### Validation
-- Require a valid-looking email in the from-address field before showing the snippet.
-- Allow empty subject keyword but warn it may return too many results.
-- No tracking, no storage, no server function.
+4. **Navigation update**
+   - Add a small, subtle link in the homepage header or footer to `/stack` so visitors can discover it without cluttering the main grid.
+   - Keep the existing homepage exactly as is; this is a new page, not a replacement.
 
-### Verification
-- Typecheck with `bunx tsgo --noEmit`.
-- Manually test the generated link opens Gmail with the correct search query.
-- Confirm the embed HTML copies correctly and the preview button renders in the neumorphic style.
+### Technical approach
+- Route files: `src/routes/stack.tsx` (public directory) and `src/routes/stack.admin.tsx` (admin form).
+- Data access: use TanStack Query in the route loader + a Supabase `software_recommendations` query.
+- Admin write: a `createServerFn` that inserts a new row, protected by `requireSupabaseAuth`.
+- Styling: reuse existing `neu-extruded`, `neu-extruded-sm`, `neu-inset-sm`, `font-display`, and accent color tokens so the new page feels native.
+
+### Open decision before we start
+- Route name: I suggest `/stack` (e.g., "my stack" / "tools I use"). Alternatives: `/recommends`, `/software`, `/tools/directory`. Let me know if you have a preference, or I can default to `/stack`.
+- Initial seed entries: do you want to add the first few entries manually through the admin form, or would you like me to seed them via a migration from a list you provide? Either works; the admin form is probably fastest for you to iterate later.
+
+### After this plan
+Once you approve, I'll implement the table, routes, and admin form. No changes to the existing homepage or current tools.
