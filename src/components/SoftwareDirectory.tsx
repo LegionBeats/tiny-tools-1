@@ -35,14 +35,14 @@ export function SoftwareDirectory() {
   return (
     <div className="min-h-screen bg-[#E0E5EC] text-[#3D4852]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-20">
+        <SiteNav />
         <header className="text-center mb-12 sm:mb-16">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 neu-extruded-sm rounded-full px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider uppercase text-[#6B7280]"
-          >
+          <div className="inline-flex items-center gap-2 neu-extruded-sm rounded-full px-4 py-1.5 mb-6">
             <span className="h-2 w-2 rounded-full bg-[#6C63FF]" />
-            <span>Marketing Tools</span>
-          </Link>
+            <span className="text-xs font-semibold tracking-wider uppercase text-[#6B7280]">
+              Software Stack
+            </span>
+          </div>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-[#3D4852]">
             Software Stack
           </h1>
