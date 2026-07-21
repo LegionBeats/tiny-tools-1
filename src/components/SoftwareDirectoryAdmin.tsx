@@ -243,6 +243,7 @@ export function SoftwareDirectoryAdmin() {
             {status === "loading" ? "Saving..." : "Add to Stack"}
           </button>
         </form>
+        <SiteFooterNav />
       </div>
     </div>
   );
