@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lovable } from "@/integrations/lovable";
+import { SiteNav, SiteFooterNav } from "@/components/SiteNav";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -19,22 +20,29 @@ function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#E0E5EC] text-[#3D4852] flex items-center justify-center px-4">
-      <div className="neu-extruded rounded-3xl p-8 sm:p-12 max-w-md w-full text-center">
-        <h1 className="font-display text-2xl font-bold text-[#3D4852] mb-2">
-          Sign in
-        </h1>
-        <p className="text-[#6B7280] mb-8">
-          Only the admin can add new software recommendations.
-        </p>
-        <button
-          type="button"
-          onClick={handleGoogle}
-          className="w-full neu-extruded-sm rounded-2xl py-3 text-sm font-semibold text-[#3D4852] hover:-translate-y-0.5 active:translate-y-0.5 transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C63FF]"
-        >
-          Continue with Google
-        </button>
+    <div className="min-h-screen bg-[#E0E5EC] text-[#3D4852]">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-20">
+        <SiteNav />
+        <div className="flex items-center justify-center">
+          <div className="neu-extruded rounded-3xl p-8 sm:p-12 max-w-md w-full text-center">
+            <h1 className="font-display text-2xl font-bold text-[#3D4852] mb-2">
+              Admin login
+            </h1>
+            <p className="text-[#6B7280] mb-8">
+              Only the admin can add new software recommendations.
+            </p>
+            <button
+              type="button"
+              onClick={handleGoogle}
+              className="w-full neu-extruded-sm rounded-2xl py-3 text-sm font-semibold text-[#3D4852] hover:-translate-y-0.5 active:translate-y-0.5 transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C63FF]"
+            >
+              Continue with Google
+            </button>
+          </div>
+        </div>
+        <SiteFooterNav />
       </div>
     </div>
   );
 }
+
