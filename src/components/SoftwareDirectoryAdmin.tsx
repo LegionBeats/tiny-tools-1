@@ -81,6 +81,7 @@ export function SoftwareDirectoryAdmin() {
   return (
     <div className="min-h-screen bg-[#E0E5EC] text-[#3D4852]">
       <div className="mx-auto max-w-2xl px-4 sm:px-6 py-12 sm:py-20">
+        <SiteNav />
         <header className="text-center mb-12">
           <h1 className="font-display text-3xl sm:text-4xl font-bold text-[#3D4852]">
             Add a software recommendation
