@@ -6,7 +6,17 @@ import {
   type RecommendationInput,
 } from "@/lib/software-recommendations.functions";
 
-const EMPTY_FORM: Omit<RecommendationInput, "tags"> & { tags: string } = {
+type FormState = {
+  name: string;
+  description: string;
+  url: string;
+  affiliate_url: string;
+  category: string;
+  tags: string;
+  logo_url: string;
+};
+
+const EMPTY_FORM: FormState = {
   name: "",
   description: "",
   url: "",

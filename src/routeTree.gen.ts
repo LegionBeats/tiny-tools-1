@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StackRouteImport } from './routes/stack'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as USlugRouteImport } from './routes/u/$slug'
 import { Route as ToolsArtistAuditArtistIdRouteImport } from './routes/tools/artist-audit/$artistId'
 
+const StackRoute = StackRouteImport.update({
+  id: '/stack',
+  path: '/stack',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -32,36 +38,47 @@ const ToolsArtistAuditArtistIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/stack': typeof StackRoute
   '/u/$slug': typeof USlugRoute
   '/tools/artist-audit/$artistId': typeof ToolsArtistAuditArtistIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/stack': typeof StackRoute
   '/u/$slug': typeof USlugRoute
   '/tools/artist-audit/$artistId': typeof ToolsArtistAuditArtistIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/stack': typeof StackRoute
   '/u/$slug': typeof USlugRoute
   '/tools/artist-audit/$artistId': typeof ToolsArtistAuditArtistIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/u/$slug' | '/tools/artist-audit/$artistId'
+  fullPaths: '/' | '/stack' | '/u/$slug' | '/tools/artist-audit/$artistId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/u/$slug' | '/tools/artist-audit/$artistId'
-  id: '__root__' | '/' | '/u/$slug' | '/tools/artist-audit/$artistId'
+  to: '/' | '/stack' | '/u/$slug' | '/tools/artist-audit/$artistId'
+  id: '__root__' | '/' | '/stack' | '/u/$slug' | '/tools/artist-audit/$artistId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  StackRoute: typeof StackRoute
   USlugRoute: typeof USlugRoute
   ToolsArtistAuditArtistIdRoute: typeof ToolsArtistAuditArtistIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/stack': {
+      id: '/stack'
+      path: '/stack'
+      fullPath: '/stack'
+      preLoaderRoute: typeof StackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  StackRoute: StackRoute,
   USlugRoute: USlugRoute,
   ToolsArtistAuditArtistIdRoute: ToolsArtistAuditArtistIdRoute,
 }
