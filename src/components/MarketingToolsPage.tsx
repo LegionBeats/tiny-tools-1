@@ -6,12 +6,23 @@ import { GmailSearchBuilder } from "./tools/GmailSearchBuilder";
 import { ExternalToolCard } from "./tools/ExternalToolCard";
 import { SiteNav, SiteFooterNav } from "./SiteNav";
 
+function RoastMyBeatCard() {
+  return (
+    <ExternalToolCard
+      title="Roast My Beat"
+      description="Get honest feedback on your music from a community of creators. External tool — link out to give it a try."
+      url="https://roast-my-beat.netlify.app/"
+      linkText="Try Roast My Beat"
+    />
+  );
+}
 
 const tools = [
   { id: "sms-optin", Component: SmsOptInTool },
   { id: "find-my-email", Component: FindMyEmailTool },
   { id: "linkedin-profile-card", Component: LinkedInProfileCardTool },
   { id: "gmail-search-builder", Component: GmailSearchBuilder },
+  { id: "roast-my-beat", Component: RoastMyBeatCard },
   { id: "artist-audit", Component: ArtistAudit },
 ];
 
@@ -35,16 +46,10 @@ export function MarketingToolsPage() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:grid-flow-col gap-10 items-start">
           {tools.map(({ id, Component }) => (
             <Component key={id} />
           ))}
-          <ExternalToolCard
-            title="Roast My Beat"
-            description="Get honest feedback on your music from a community of creators. External tool — link out to give it a try."
-            url="https://roast-my-beat.netlify.app/"
-            linkText="Try Roast My Beat"
-          />
         </div>
 
         <SiteFooterNav />
@@ -52,4 +57,3 @@ export function MarketingToolsPage() {
     </div>
   );
 }
-
