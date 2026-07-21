@@ -9,10 +9,10 @@ import { SiteNav, SiteFooterNav } from "./SiteNav";
 
 const tools = [
   { id: "sms-optin", Component: SmsOptInTool },
-  { id: "artist-audit", Component: ArtistAudit },
-  { id: "linkedin-profile-card", Component: LinkedInProfileCardTool },
   { id: "find-my-email", Component: FindMyEmailTool },
+  { id: "linkedin-profile-card", Component: LinkedInProfileCardTool },
   { id: "gmail-search-builder", Component: GmailSearchBuilder },
+  { id: "artist-audit", Component: ArtistAudit },
 ];
 
 export function MarketingToolsPage() {
