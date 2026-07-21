@@ -212,7 +212,7 @@ export function SoftwareDirectoryAdmin() {
               htmlFor="logo_url"
               className="block text-sm font-semibold text-[#3D4852] mb-2"
             >
-              Logo URL (optional)
+              Logo URL (optional — defaults to the site's favicon)
             </label>
             <input
               id="logo_url"
