@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { SmsOptInTool } from "./tools/SmsOptInTool";
 import { ArtistAudit } from "./tools/ArtistAudit";
 import { LinkedInProfileCardTool } from "./tools/LinkedInProfileCard";
