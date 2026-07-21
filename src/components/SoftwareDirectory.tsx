@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { getRecommendations } from "@/lib/software-recommendations.functions";
+import { SiteNav, SiteFooterNav } from "./SiteNav";
 
 export const recommendationsQueryOptions = () =>
   queryOptions({
