@@ -19,6 +19,7 @@ export function MarketingToolsPage() {
   return (
     <div className="min-h-screen bg-[#E0E5EC] text-[#3D4852]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-20">
+        <SiteNav />
         <header className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 neu-extruded-sm rounded-full px-4 py-1.5 mb-6">
             <span className="h-2 w-2 rounded-full bg-[#6C63FF]" />
@@ -46,17 +47,9 @@ export function MarketingToolsPage() {
           />
         </div>
 
-        <footer className="mt-16 text-center text-xs text-[#9AA3B2]">
-          <Link
-            to="/stack"
-            className="text-[#6C63FF] hover:underline font-medium"
-          >
-            Software I use & recommend
-          </Link>
-          <span className="mx-2">·</span>
-          More tools coming soon.
-        </footer>
+        <SiteFooterNav />
       </div>
     </div>
   );
 }
+
