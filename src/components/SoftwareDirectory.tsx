@@ -135,14 +135,7 @@ export function SoftwareDirectory() {
           </div>
         )}
 
-        <footer className="mt-16 text-center">
-          <Link
-            to="/"
-            className="text-sm font-semibold text-[#6C63FF] hover:underline"
-          >
-            ← Back to Marketing Tools
-          </Link>
-        </footer>
+        <SiteFooterNav />
       </div>
     </div>
   );
