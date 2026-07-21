@@ -46,6 +46,13 @@ export function MarketingToolsPage() {
         </div>
 
         <footer className="mt-16 text-center text-xs text-[#9AA3B2]">
+          <Link
+            to="/stack"
+            className="text-[#6C63FF] hover:underline font-medium"
+          >
+            Software I use & recommend
+          </Link>
+          <span className="mx-2">·</span>
           More tools coming soon.
         </footer>
       </div>
