@@ -90,13 +90,15 @@ export function SoftwareDirectory() {
                 <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase text-[#6C63FF] neu-inset-sm">
                   {rec.category}
                 </span>
-                {rec.logo_url && (
-                  <img
-                    src={rec.logo_url}
-                    alt={`${rec.name} logo`}
-                    className="h-10 w-10 object-contain rounded-lg"
-                  />
-                )}
+                <img
+                  src={
+                    rec.logo_url ||
+                    `https://www.google.com/s2/favicons?domain=${encodeURIComponent(rec.url)}&sz=128`
+                  }
+                  alt={`${rec.name} logo`}
+                  className="h-10 w-10 object-contain rounded-lg"
+                  loading="lazy"
+                />
               </div>
               <h2 className="font-display text-2xl font-bold text-[#3D4852] mb-2">
                 {rec.name}
