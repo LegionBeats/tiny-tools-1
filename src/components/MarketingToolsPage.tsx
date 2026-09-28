@@ -3,6 +3,7 @@ import { ArtistAudit } from "./tools/ArtistAudit";
 import { LinkedInProfileCardTool } from "./tools/LinkedInProfileCard";
 import { FindMyEmailTool } from "./tools/FindMyEmailTool";
 import { GmailSearchBuilder } from "./tools/GmailSearchBuilder";
+import { FaviconGrabber } from "./tools/FaviconGrabber";
 import { ExternalToolCard } from "./tools/ExternalToolCard";
 import { SiteNav, SiteFooterNav } from "./SiteNav";
 
@@ -24,6 +25,7 @@ const tools = [
   { id: "gmail-search-builder", Component: GmailSearchBuilder },
   { id: "roast-my-beat", Component: RoastMyBeatCard },
   { id: "artist-audit", Component: ArtistAudit },
+  { id: "favicon-grabber", Component: FaviconGrabber },
 ];
 
 export function MarketingToolsPage() {
@@ -46,7 +48,7 @@ export function MarketingToolsPage() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:grid-flow-col gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-4 lg:grid-flow-col gap-10 items-start">
           {tools.map(({ id, Component }) => (
             <Component key={id} />
           ))}
