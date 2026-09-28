@@ -18,10 +18,10 @@ function extractDomain(input: string): string | null {
 
 function sources(domain: string) {
   return [
-    { label: "Google · 128px", url: `https://www.google.com/s2/favicons?domain=${domain}&sz=128`, dl: `/api/public/favicon?source=google&sz=128&domain=${domain}` },
-    { label: "Google · 64px", url: `https://www.google.com/s2/favicons?domain=${domain}&sz=64`, dl: `/api/public/favicon?source=google&sz=64&domain=${domain}` },
-    { label: "Google · 32px", url: `https://www.google.com/s2/favicons?domain=${domain}&sz=32`, dl: `/api/public/favicon?source=google&sz=32&domain=${domain}` },
-    { label: "DuckDuckGo", url: `https://icons.duckduckgo.com/ip3/${domain}.ico`, dl: `/api/public/favicon?source=ddg&domain=${domain}` },
+    { label: "128px", url: `https://www.google.com/s2/favicons?domain=${domain}&sz=128`, dl: `/api/public/favicon?source=google&sz=128&domain=${domain}` },
+    { label: "64px", url: `https://www.google.com/s2/favicons?domain=${domain}&sz=64`, dl: `/api/public/favicon?source=google&sz=64&domain=${domain}` },
+    { label: "32px", url: `https://www.google.com/s2/favicons?domain=${domain}&sz=32`, dl: `/api/public/favicon?source=google&sz=32&domain=${domain}` },
+    { label: "ICO", url: `https://icons.duckduckgo.com/ip3/${domain}.ico`, dl: `/api/public/favicon?source=ddg&domain=${domain}` },
   ];
 }
 
@@ -39,8 +39,8 @@ export function FaviconGrabber() {
 
   return (
     <ToolCard
-      title="Grab Any Website's Favicon"
-      subtitle="Type in a website and instantly see its little tab icon — preview it and download it in a click."
+      title="Grab the favicon (logo) from any website"
+      subtitle="Type in any website and instantly see its little tab icon/logo — preview it, and download it in a click!"
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
