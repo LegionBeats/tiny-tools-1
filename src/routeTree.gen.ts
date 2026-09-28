@@ -15,6 +15,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as USlugRouteImport } from './routes/u/$slug'
 import { Route as ToolsArtistAuditArtistIdRouteImport } from './routes/tools/artist-audit/$artistId'
+import { Route as ApiPublicFaviconRouteImport } from './routes/api/public/favicon'
 import { Route as AuthenticatedStackAdminRouteImport } from './routes/_authenticated.stack.admin'
 
 const StackRoute = StackRouteImport.update({
@@ -47,6 +48,11 @@ const ToolsArtistAuditArtistIdRoute =
     path: '/tools/artist-audit/$artistId',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicFaviconRoute = ApiPublicFaviconRouteImport.update({
+  id: '/api/public/favicon',
+  path: '/api/public/favicon',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedStackAdminRoute = AuthenticatedStackAdminRouteImport.update({
   id: '/stack/admin',
   path: '/stack/admin',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/stack': typeof StackRoute
   '/u/$slug': typeof USlugRoute
   '/stack/admin': typeof AuthenticatedStackAdminRoute
+  '/api/public/favicon': typeof ApiPublicFaviconRoute
   '/tools/artist-audit/$artistId': typeof ToolsArtistAuditArtistIdRoute
 }
 export interface FileRoutesByTo {
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/stack': typeof StackRoute
   '/u/$slug': typeof USlugRoute
   '/stack/admin': typeof AuthenticatedStackAdminRoute
+  '/api/public/favicon': typeof ApiPublicFaviconRoute
   '/tools/artist-audit/$artistId': typeof ToolsArtistAuditArtistIdRoute
 }
 export interface FileRoutesById {
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/stack': typeof StackRoute
   '/u/$slug': typeof USlugRoute
   '/_authenticated/stack/admin': typeof AuthenticatedStackAdminRoute
+  '/api/public/favicon': typeof ApiPublicFaviconRoute
   '/tools/artist-audit/$artistId': typeof ToolsArtistAuditArtistIdRoute
 }
 export interface FileRouteTypes {
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/stack'
     | '/u/$slug'
     | '/stack/admin'
+    | '/api/public/favicon'
     | '/tools/artist-audit/$artistId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
     | '/stack'
     | '/u/$slug'
     | '/stack/admin'
+    | '/api/public/favicon'
     | '/tools/artist-audit/$artistId'
   id:
     | '__root__'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '/stack'
     | '/u/$slug'
     | '/_authenticated/stack/admin'
+    | '/api/public/favicon'
     | '/tools/artist-audit/$artistId'
   fileRoutesById: FileRoutesById
 }
@@ -113,6 +125,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   StackRoute: typeof StackRoute
   USlugRoute: typeof USlugRoute
+  ApiPublicFaviconRoute: typeof ApiPublicFaviconRoute
   ToolsArtistAuditArtistIdRoute: typeof ToolsArtistAuditArtistIdRoute
 }
 
@@ -160,6 +173,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsArtistAuditArtistIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/favicon': {
+      id: '/api/public/favicon'
+      path: '/api/public/favicon'
+      fullPath: '/api/public/favicon'
+      preLoaderRoute: typeof ApiPublicFaviconRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/stack/admin': {
       id: '/_authenticated/stack/admin'
       path: '/stack/admin'
@@ -187,6 +207,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   StackRoute: StackRoute,
   USlugRoute: USlugRoute,
+  ApiPublicFaviconRoute: ApiPublicFaviconRoute,
   ToolsArtistAuditArtistIdRoute: ToolsArtistAuditArtistIdRoute,
 }
 export const routeTree = rootRouteImport
