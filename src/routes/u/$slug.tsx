@@ -43,7 +43,7 @@ export const Route = createFileRoute("/u/$slug")({
   errorComponent: ({ error }) => (
     <FallbackShell>
       <p className="text-[#3D4852] font-semibold">Couldn't load this profile.</p>
-      <p className="text-xs text-[#6B7280] mt-2">{error.message}</p>
+      <p className="text-xs text-[#6B7280] mt-2">{error instanceof Error ? error.message : "Something went wrong."}</p>
     </FallbackShell>
   ),
   notFoundComponent: () => (
