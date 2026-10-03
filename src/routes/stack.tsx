@@ -35,7 +35,7 @@ export const Route = createFileRoute("/stack")({
   notFoundComponent: StackNotFoundComponent,
 });
 
-function StackErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function StackErrorComponent({ error, reset }: { error: unknown; reset: () => void }) {
   console.error(error);
   return (
     <div className="min-h-screen bg-[#E0E5EC] text-[#3D4852] flex items-center justify-center px-4">
