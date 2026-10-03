@@ -59,6 +59,19 @@ export function SmsOptInTool() {
     }
   };
 
+  const [copiedText, setCopiedText] = useState(false);
+  const plainText = `Text ${keyword.trim() || "JOIN"} to +${country.dial} ${formatPhoneDisplay(digits, country.dial)} to subscribe!`;
+  const handleCopyText = async () => {
+    try {
+      await navigator.clipboard.writeText(plainText);
+      setCopiedText(true);
+      setTimeout(() => setCopiedText(false), 1500);
+    } catch {
+      // ignore
+    }
+  };
+
+
   const handleDownload = () => {
     const canvas = qrWrapRef.current?.querySelector("canvas");
     if (!canvas) return;
@@ -184,6 +197,25 @@ export function SmsOptInTool() {
                   className="neu-extruded-sm rounded-xl px-5 py-2.5 text-sm font-semibold text-[#6C63FF] hover:-translate-y-0.5 active:translate-y-0.5 transition-transform whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C63FF]"
                 >
                   {copied ? "Copied!" : "Copy Link"}
+                </button>
+              </div>
+            </div>
+
+            {/* Plain text */}
+            <div>
+              <p className="text-sm text-[#6B7280] mb-3">
+                Prefer plain words? Paste this into captions, emails, posts, or print.
+              </p>
+              <div className="neu-inset rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+                <p className="text-sm sm:text-base text-[#3D4852] flex-1 select-all">
+                  {plainText}
+                </p>
+                <button
+                  type="button"
+                  onClick={handleCopyText}
+                  className="neu-extruded-sm rounded-xl px-5 py-2.5 text-sm font-semibold text-[#6C63FF] hover:-translate-y-0.5 active:translate-y-0.5 transition-transform whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C63FF]"
+                >
+                  {copiedText ? "Copied!" : "Copy Text"}
                 </button>
               </div>
             </div>
