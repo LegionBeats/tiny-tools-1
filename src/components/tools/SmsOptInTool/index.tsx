@@ -59,17 +59,6 @@ export function SmsOptInTool() {
     }
   };
 
-  const [copiedText, setCopiedText] = useState(false);
-  const plainText = `Text ${keyword.trim() || "JOIN"} to +${country.dial} ${formatPhoneDisplay(digits, country.dial)} to subscribe!`;
-  const handleCopyText = async () => {
-    try {
-      await navigator.clipboard.writeText(plainText);
-      setCopiedText(true);
-      setTimeout(() => setCopiedText(false), 1500);
-    } catch {
-      // ignore
-    }
-  };
 
 
   const handleDownload = () => {
@@ -182,44 +171,6 @@ export function SmsOptInTool() {
           <div className="pt-4 space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
             <div className="h-px bg-gradient-to-r from-transparent via-[#c8cfdb] to-transparent" />
 
-            {/* Link */}
-            <div>
-              <p className="text-sm text-[#6B7280] mb-3">
-                Add this to your link in bio, website, funnels, landing pages, or anywhere online.
-              </p>
-              <div className="neu-inset rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-4">
-                <code className="font-mono text-sm sm:text-base text-[#3D4852] break-all flex-1 select-all">
-                  {result.link}
-                </code>
-                <button
-                  type="button"
-                  onClick={handleCopy}
-                  className="neu-extruded-sm rounded-xl px-5 py-2.5 text-sm font-semibold text-[#6C63FF] hover:-translate-y-0.5 active:translate-y-0.5 transition-transform whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C63FF]"
-                >
-                  {copied ? "Copied!" : "Copy Link"}
-                </button>
-              </div>
-            </div>
-
-            {/* Plain text */}
-            <div>
-              <p className="text-sm text-[#6B7280] mb-3">
-                Prefer plain words? Paste this into captions, emails, posts, or print.
-              </p>
-              <div className="neu-inset rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-4">
-                <p className="text-sm sm:text-base text-[#3D4852] flex-1 select-all">
-                  {plainText}
-                </p>
-                <button
-                  type="button"
-                  onClick={handleCopyText}
-                  className="neu-extruded-sm rounded-xl px-5 py-2.5 text-sm font-semibold text-[#6C63FF] hover:-translate-y-0.5 active:translate-y-0.5 transition-transform whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C63FF]"
-                >
-                  {copiedText ? "Copied!" : "Copy Text"}
-                </button>
-              </div>
-            </div>
-
             {/* QR */}
             <div className="flex flex-col items-center text-center">
               <div
@@ -242,14 +193,20 @@ export function SmsOptInTool() {
               >
                 Download QR Code
               </button>
-              <ul className="mt-6 space-y-2 text-sm text-[#6B7280] max-w-md">
-                <li>
-                  <span className="font-semibold text-[#3D4852]">Share it digitally</span> — drop it on your website, emails, or social posts.
-                </li>
-                <li>
-                  <span className="font-semibold text-[#3D4852]">Print it</span> — add it to flyers, business cards, packaging, or handouts.
-                </li>
-              </ul>
+            </div>
+
+            {/* Link */}
+            <div className="neu-inset rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+              <code className="font-mono text-sm sm:text-base text-[#3D4852] break-all flex-1 select-all">
+                {result.link}
+              </code>
+              <button
+                type="button"
+                onClick={handleCopy}
+                className="neu-extruded-sm rounded-xl px-5 py-2.5 text-sm font-semibold text-[#6C63FF] hover:-translate-y-0.5 active:translate-y-0.5 transition-transform whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6C63FF]"
+              >
+                {copied ? "Copied!" : "Copy Link"}
+              </button>
             </div>
           </div>
         )}
