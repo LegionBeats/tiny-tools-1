@@ -6,7 +6,6 @@ import {
   type RecommendationInput,
 } from "@/lib/software-recommendations.functions";
 import { SiteNav, SiteFooterNav } from "./SiteNav";
-import { MaybeList } from "./MaybeList";
 
 type FormState = {
   name: string;
@@ -244,7 +243,6 @@ export function SoftwareDirectoryAdmin() {
             {status === "loading" ? "Saving..." : "Add to Stack"}
           </button>
         </form>
-        <MaybeList />
         <SiteFooterNav />
       </div>
     </div>
