@@ -7,6 +7,10 @@ const IDEAS = [
     name: "Link-in-bio checklist (or apply the checklist idea to something else)",
     url: "https://linke.ro/tools/link-in-bio-checklist",
   },
+  {
+    name: "Pricing table generator (fill in plans, get HTML code)",
+    url: "https://linke.ro/tools/pricing-table-generator",
+  },
 ];
 
 export function MaybeList() {
