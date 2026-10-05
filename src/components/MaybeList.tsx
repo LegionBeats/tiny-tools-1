@@ -3,6 +3,10 @@ const IDEAS = [
     name: "vCard generator",
     url: "https://linke.ro/tools/vcard-generator",
   },
+  {
+    name: "Link-in-bio checklist (or apply the checklist idea to something else)",
+    url: "https://linke.ro/tools/link-in-bio-checklist",
+  },
 ];
 
 export function MaybeList() {
