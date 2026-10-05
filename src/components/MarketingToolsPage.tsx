@@ -4,6 +4,7 @@ import { LinkedInProfileCardTool } from "./tools/LinkedInProfileCard";
 import { FindMyEmailTool } from "./tools/FindMyEmailTool";
 import { GmailSearchBuilder } from "./tools/GmailSearchBuilder";
 import { FaviconGrabber } from "./tools/FaviconGrabber";
+import { PreSaveCaptions } from "./tools/PreSaveCaptions";
 import { ExternalToolCard } from "./tools/ExternalToolCard";
 import { SiteNav, SiteFooterNav } from "./SiteNav";
 
@@ -26,6 +27,7 @@ const tools = [
   { id: "roast-my-beat", Component: RoastMyBeatCard },
   { id: "artist-audit", Component: ArtistAudit },
   { id: "favicon-grabber", Component: FaviconGrabber },
+  { id: "presave-captions", Component: PreSaveCaptions },
 ];
 
 export function MarketingToolsPage() {
