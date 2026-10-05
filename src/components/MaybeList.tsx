@@ -11,7 +11,7 @@ const IDEAS = [
 
 export function MaybeList() {
   return (
-    <section className="neu-extruded rounded-3xl p-6 sm:p-8 mt-10">
+    <section className="neu-extruded rounded-3xl p-6 sm:p-8 ">
       <h2 className="font-display text-xl font-bold text-[#3D4852]">Maybe list</h2>
       <p className="mt-1 text-sm text-[#6B7280]">
         Tool ideas you're still deciding on.

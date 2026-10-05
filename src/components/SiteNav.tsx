@@ -30,6 +30,19 @@ export function SiteNav() {
       >
         Software Stack
       </Link>
+      <Link
+        to="/maybe"
+        activeProps={{
+          className:
+            "neu-inset-sm rounded-full px-5 py-2 text-xs font-semibold tracking-wider uppercase text-[#6C63FF]",
+        }}
+        inactiveProps={{
+          className:
+            "neu-extruded-sm rounded-full px-5 py-2 text-xs font-semibold tracking-wider uppercase text-[#6B7280] hover:-translate-y-0.5 active:translate-y-0.5 transition-transform",
+        }}
+      >
+        Maybe List
+      </Link>
     </nav>
   );
 }

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StackRouteImport } from './routes/stack'
+import { Route as MaybeRouteImport } from './routes/maybe'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
@@ -21,6 +22,11 @@ import { Route as AuthenticatedStackAdminRouteImport } from './routes/_authentic
 const StackRoute = StackRouteImport.update({
   id: '/stack',
   path: '/stack',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MaybeRoute = MaybeRouteImport.update({
+  id: '/maybe',
+  path: '/maybe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -62,6 +68,7 @@ const AuthenticatedStackAdminRoute = AuthenticatedStackAdminRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/maybe': typeof MaybeRoute
   '/stack': typeof StackRoute
   '/u/$slug': typeof USlugRoute
   '/stack/admin': typeof AuthenticatedStackAdminRoute
@@ -71,6 +78,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/maybe': typeof MaybeRoute
   '/stack': typeof StackRoute
   '/u/$slug': typeof USlugRoute
   '/stack/admin': typeof AuthenticatedStackAdminRoute
@@ -82,6 +90,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/maybe': typeof MaybeRoute
   '/stack': typeof StackRoute
   '/u/$slug': typeof USlugRoute
   '/_authenticated/stack/admin': typeof AuthenticatedStackAdminRoute
@@ -93,6 +102,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/maybe'
     | '/stack'
     | '/u/$slug'
     | '/stack/admin'
@@ -102,6 +112,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/maybe'
     | '/stack'
     | '/u/$slug'
     | '/stack/admin'
@@ -112,6 +123,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/maybe'
     | '/stack'
     | '/u/$slug'
     | '/_authenticated/stack/admin'
@@ -123,6 +135,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  MaybeRoute: typeof MaybeRoute
   StackRoute: typeof StackRoute
   USlugRoute: typeof USlugRoute
   ApiPublicFaviconRoute: typeof ApiPublicFaviconRoute
@@ -136,6 +149,13 @@ declare module '@tanstack/react-router' {
       path: '/stack'
       fullPath: '/stack'
       preLoaderRoute: typeof StackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/maybe': {
+      id: '/maybe'
+      path: '/maybe'
+      fullPath: '/maybe'
+      preLoaderRoute: typeof MaybeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -205,6 +225,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  MaybeRoute: MaybeRoute,
   StackRoute: StackRoute,
   USlugRoute: USlugRoute,
   ApiPublicFaviconRoute: ApiPublicFaviconRoute,
