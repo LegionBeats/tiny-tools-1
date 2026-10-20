@@ -100,7 +100,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_linkedin_profile: {
+        Args: { _slug: string }
+        Returns: {
+          about: string
+          company: string
+          full_name: string
+          headline: string
+          location: string
+          skills: string[]
+          theme: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
