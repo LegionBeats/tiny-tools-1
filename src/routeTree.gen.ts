@@ -9,24 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as StackRouteImport } from './routes/stack'
-import { Route as MaybeRouteImport } from './routes/maybe'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as MaybeRouteImport } from './routes/maybe'
+import { Route as StackRouteImport } from './routes/stack'
 import { Route as USlugRouteImport } from './routes/u/$slug'
-import { Route as ToolsArtistAuditArtistIdRouteImport } from './routes/tools/artist-audit/$artistId'
-import { Route as ApiPublicFaviconRouteImport } from './routes/api/public/favicon'
 import { Route as AuthenticatedStackAdminRouteImport } from './routes/_authenticated.stack.admin'
+import { Route as ApiPublicFaviconRouteImport } from './routes/api/public/favicon'
+import { Route as ToolsArtistAuditArtistIdRouteImport } from './routes/tools/artist-audit/$artistId'
 
-const StackRoute = StackRouteImport.update({
-  id: '/stack',
-  path: '/stack',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MaybeRoute = MaybeRouteImport.update({
-  id: '/maybe',
-  path: '/maybe',
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -34,18 +33,29 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
+const MaybeRoute = MaybeRouteImport.update({
+  id: '/maybe',
+  path: '/maybe',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const StackRoute = StackRouteImport.update({
+  id: '/stack',
+  path: '/stack',
   getParentRoute: () => rootRouteImport,
 } as any)
 const USlugRoute = USlugRouteImport.update({
   id: '/u/$slug',
   path: '/u/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedStackAdminRoute = AuthenticatedStackAdminRouteImport.update({
+  id: '/stack/admin',
+  path: '/stack/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const ApiPublicFaviconRoute = ApiPublicFaviconRouteImport.update({
+  id: '/api/public/favicon',
+  path: '/api/public/favicon',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ToolsArtistAuditArtistIdRoute =
@@ -54,16 +64,6 @@ const ToolsArtistAuditArtistIdRoute =
     path: '/tools/artist-audit/$artistId',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ApiPublicFaviconRoute = ApiPublicFaviconRouteImport.update({
-  id: '/api/public/favicon',
-  path: '/api/public/favicon',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthenticatedStackAdminRoute = AuthenticatedStackAdminRouteImport.update({
-  id: '/stack/admin',
-  path: '/stack/admin',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -144,25 +144,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/stack': {
-      id: '/stack'
-      path: '/stack'
-      fullPath: '/stack'
-      preLoaderRoute: typeof StackRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/maybe': {
-      id: '/maybe'
-      path: '/maybe'
-      fullPath: '/maybe'
-      preLoaderRoute: typeof MaybeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated': {
@@ -172,11 +158,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/maybe': {
+      id: '/maybe'
+      path: '/maybe'
+      fullPath: '/maybe'
+      preLoaderRoute: typeof MaybeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stack': {
+      id: '/stack'
+      path: '/stack'
+      fullPath: '/stack'
+      preLoaderRoute: typeof StackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/u/$slug': {
@@ -186,12 +186,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof USlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/tools/artist-audit/$artistId': {
-      id: '/tools/artist-audit/$artistId'
-      path: '/tools/artist-audit/$artistId'
-      fullPath: '/tools/artist-audit/$artistId'
-      preLoaderRoute: typeof ToolsArtistAuditArtistIdRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_authenticated/stack/admin': {
+      id: '/_authenticated/stack/admin'
+      path: '/stack/admin'
+      fullPath: '/stack/admin'
+      preLoaderRoute: typeof AuthenticatedStackAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/api/public/favicon': {
       id: '/api/public/favicon'
@@ -200,12 +200,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicFaviconRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/stack/admin': {
-      id: '/_authenticated/stack/admin'
-      path: '/stack/admin'
-      fullPath: '/stack/admin'
-      preLoaderRoute: typeof AuthenticatedStackAdminRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+    '/tools/artist-audit/$artistId': {
+      id: '/tools/artist-audit/$artistId'
+      path: '/tools/artist-audit/$artistId'
+      fullPath: '/tools/artist-audit/$artistId'
+      preLoaderRoute: typeof ToolsArtistAuditArtistIdRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
