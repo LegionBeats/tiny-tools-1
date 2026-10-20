@@ -4,12 +4,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { ProfileCard, type CardTheme, type ProfileData } from "@/components/tools/LinkedInProfileCard/ProfileCard";
 
 async function fetchProfile(slug: string): Promise<ProfileData> {
-  const { data, error } = await supabase
-    .from("linkedin_profiles")
-    .select("full_name, headline, company, location, about, skills, theme")
-    .eq("slug", slug)
-    .maybeSingle();
+  const { data: rows, error } = await supabase.rpc("get_linkedin_profile", { _slug: slug });
   if (error) throw error;
+  const data = rows?.[0];
   if (!data) throw notFound();
   return {
     full_name: data.full_name,
